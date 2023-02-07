@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://simotsukiyuki.github.io</id>
+    <title>SHIYUKI Software</title>
+    <updated>2023-02-07T01:35:55.140Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://simotsukiyuki.github.io"/>
+    <link rel="self" href="https://simotsukiyuki.github.io/atom.xml"/>
+    <subtitle>霜月雪的游戏人生</subtitle>
+    <logo>https://simotsukiyuki.github.io/images/avatar.png</logo>
+    <icon>https://simotsukiyuki.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, SHIYUKI Software</rights>
+    <entry>
+        <title type="html"><![CDATA[解决OMV6安装ovm-extras不成功的问题]]></title>
+        <id>https://simotsukiyuki.github.io/post/jie-jue-omv6-an-zhuang-ovm-extras-bu-cheng-gong-de-wen-ti/</id>
+        <link href="https://simotsukiyuki.github.io/post/jie-jue-omv6-an-zhuang-ovm-extras-bu-cheng-gong-de-wen-ti/">
+        </link>
+        <updated>2023-02-05T11:47:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>安装OVM6之后，根据omv-extras的官方教程，安装插件仓库需要在tty内输入下面的命令</p>
+<pre><code>wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash
+</code></pre>
+<p>但是由于众所周知的某些不能说的原因，在国内访问GitHub会有各种各样的问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>安装OVM6之后，根据omv-extras的官方教程，安装插件仓库需要在tty内输入下面的命令</p>
+<pre><code>wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash
+</code></pre>
+<p>但是由于众所周知的某些不能说的原因，在国内访问GitHub会有各种各样的问题。</p>
+<!-- more -->
+<h1 id="解决方法">解决方法</h1>
+<p>在OMV后台的<em>服务-&gt;SSH菜单</em>打开SSH服务，然后用Putty连过去执行如下命令替换清华源</p>
+<pre><code>sudo omv-env set OMV_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public&quot;
+sudo omv-env set OMV_APT_ALT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/packages&quot;
+sudo omv-env set OMV_APT_KERNEL_BACKPORTS_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/debian&quot;
+sudo omv-env set OMV_APT_SECURITY_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/debian-security&quot;
+sudo omv-env set OMV_EXTRAS_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers&quot;
+sudo omv-env set OMV_DOCKER_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian&quot;
+sudo omv-env set OMV_PROXMOX_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian&quot;
+sudo omv-salt stage run all
+</code></pre>
+<p>替换完成后安装omv-extras即可</p>
+<pre><code>sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_6.1.1_all.deb
+sudo dpkg -i openmediavault-omvextrasorg_6.1.1_all.deb
+</code></pre>
+<h1 id="来源">来源</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/592575274">https://zhuanlan.zhihu.com/p/592575274</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ayaneo Black Screen：一个OLED掌机一键关屏的小工具]]></title>
+        <id>https://simotsukiyuki.github.io/post/ayaneo-black-screenyi-ge-oled-zhang-ji-yi-jian-guan-ping-de-xiao-gong-ju/</id>
+        <link href="https://simotsukiyuki.github.io/post/ayaneo-black-screenyi-ge-oled-zhang-ji-yi-jian-guan-ping-de-xiao-gong-ju/">
+        </link>
+        <updated>2023-02-03T01:38:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>众所周知由于OLED存在烧屏的问题，所以像AYANEO Air这种使用OLED屏幕的掌机，在下载游戏的时候就有可能因为长时间保持一个静态界面导致烧屏。<br>
+这个小工具就是为了延缓OLED的烧屏问题而制作的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>众所周知由于OLED存在烧屏的问题，所以像AYANEO Air这种使用OLED屏幕的掌机，在下载游戏的时候就有可能因为长时间保持一个静态界面导致烧屏。<br>
+这个小工具就是为了延缓OLED的烧屏问题而制作的。</p>
+<!-- more -->
+<h1 id="下载">下载</h1>
+<p><a href="https://github.com/simotsukiyuki/AyaneoBlackScreen/releases">GitHub链接</a></p>
+<h1 id="使用方法">使用方法</h1>
+<p>推荐使用安装版程序。<br>
+在安装之后这个程序会出现在你的开始菜单。把它固定到任务栏，点击运行即可。<br>
+退出程序：点击五次屏幕或鼠标左键。<br>
+删除：去控制面板卸载。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[无需安装git！使用Gridea创建GitHub Pages指南]]></title>
+        <id>https://simotsukiyuki.github.io/post/wu-xu-an-zhuang-gitshi-yong-gridea-chuang-jian-github-pages-zhi-nan/</id>
+        <link href="https://simotsukiyuki.github.io/post/wu-xu-an-zhuang-gitshi-yong-gridea-chuang-jian-github-pages-zhi-nan/">
+        </link>
+        <updated>2023-02-02T06:30:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>众所周知，Github Pages只能存放静态页面。因此如果需要在Github Pages上写博客就需要博客生成器。如果电脑上没有安装开发环境的相关工具，那么使用Hugo、Jekyll等就得先得去装环境……显然这种情况对于只想建站写东西来说实在是太麻烦了。<br>
+后来找到了Gridea这款静态博客系统，只需要安装客户端就可以用，甚至不需要装git就可以直接把生成的页面push到repo里。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>众所周知，Github Pages只能存放静态页面。因此如果需要在Github Pages上写博客就需要博客生成器。如果电脑上没有安装开发环境的相关工具，那么使用Hugo、Jekyll等就得先得去装环境……显然这种情况对于只想建站写东西来说实在是太麻烦了。<br>
+后来找到了Gridea这款静态博客系统，只需要安装客户端就可以用，甚至不需要装git就可以直接把生成的页面push到repo里。</p>
+<!-- more -->
+<h1 id="下载">下载</h1>
+<p><a href="https://github.com/getgridea/gridea">GitHub</a><br>
+<a href="https://open.gridea.dev/">官方网站</a></p>
+<h1 id="创建github-pages仓库">创建GitHub Pages仓库</h1>
+<p>在你的GitHub主页直接创建一个新的公开仓库，仓库的名字（Repository name）必须是<em>你的id.github.io</em>，例如我的id是<em>simotsukiyuki</em>,那么你的仓库名就应该是<em>simotsukiyuki.github.io</em>。创建好仓库之后，GitHub会自动将这个仓库识别为GitHub Pages的“网页空间”，接下来你只需要把你的网页html给push到这个仓库就可以了。</p>
+<h1 id="配置gridea">配置Gridea</h1>
+<p>安装好Gridea后，在主界面点击左侧“远程”选项卡，会要你填写一些信息<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675321719310.png" alt="" loading="lazy"><br>
+域名、仓库名、用户名不用多说了，分支一般是main或者master（取决于你的默认设置）。<br>
+关键的是这个Token，如果你之前没有，那么需要你去<a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a>生成一个新的Token。<br>
+在 <strong>Select scopes</strong> 勾选上 repo 的几个相关权限。在<strong>Expiration</strong>设置为<strong>No Expiration</strong>（即Token永不过期）。生成之后，记得把 Token 复制到你的本地，因为一旦关闭网页将不能再看到它。<br>
+远程选项卡最下面的HTTP代理那里取决于你的网络情况选择直连或者走代理。如果你使用了类似于威兔睿之类的软件访问GitHub，就填写127.0.0.1和10809端口（因为Http端口是Socket5端口号+1）。<br>
+之后测试一下连接，一般都可以测试成功。</p>
+<h1 id="推送至repo">推送至REPO</h1>
+<p>主题相关的设置不再赘述。之后你就可以写文章，然后推送到repo了。写好文章预览完毕，点击推送即可。当然，这期间需要确保你的网络能正确访问Github。等待推送完成，访问<em>https://[你的用户名].github.io</em> 就可以查看到你的网站了。</p>
+<h1 id="使用自己的顶级域名可选">使用自己的顶级域名（可选）</h1>
+<p>如果不想拖着github.io的二级域名，想要绑定到自己的顶级域名也是可以的。（GitHub业界良心）<br>
+注册顶级域名的相关内容不再赘述，也不是本文所讨论的内容。只说如何绑定</p>
+<h2 id="绑定cname记录-a记录和aaaa记录">绑定CNAME记录、A记录和AAAA记录</h2>
+<p>需要绑定以下三种记录：</p>
+<ul>
+<li>
+<p>绑定一条CNAME记录，前缀为www，指向<em>你的用户名.github.io</em> （注意不要加https://前缀）</p>
+</li>
+<li>
+<p>绑定四条A记录，前缀为@，列表如下</p>
+</li>
+</ul>
+<blockquote>
+<p>185.199.108.153<br>
+185.199.109.153<br>
+185.199.110.153<br>
+185.199.111.153</p>
+</blockquote>
+<ul>
+<li>绑定四条AAAA记录，同样前缀为@，列表如下</li>
+</ul>
+<blockquote>
+<p>2606:50c0:8000::153<br>
+2606:50c0:8001::153<br>
+2606:50c0:8002::153<br>
+2606:50c0:8003::153</p>
+</blockquote>
+<h2 id="设置github-pages">设置GitHub Pages</h2>
+<p>在网页仓库点击Settings<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675327802025.jpg" alt="" loading="lazy"><br>
+在左边选项卡找到Pages，然后在Custom Domain填入你的顶级域名（注意没有www前缀），然后勾选Enforce HTTPS即可。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675328007502.png" alt="" loading="lazy"><br>
+由于CNAME解析完成需要一定时间，所以稍等10几分钟（也有可能得几个小时），就可以直接访问到你的域名了。<br>
+最后<strong>别忘了在Gridea的“远程”选项卡内，在CNAME那一栏里填写你的域名</strong>。</p>
+<h2 id="如果https出现不安全的连接怎么办">如果Https出现“不安全的连接”怎么办</h2>
+<p>说明GitHub Pages没有正确处理TLS证书，只需要在上一步Custom Domain那里，删掉域名再重新填写一遍就可以了。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site</a></p>
+<h1 id="多设备同步编辑网站源文件的云存储">多设备同步编辑&amp;网站源文件的云存储</h1>
+<p>出于一些情况的考虑，有时候我们需要在不同的电脑上编辑网站内容。但显然由于Gridea并不存在在线编辑器，因此我们需要利用一些其他的方式来实现同步的需求。<br>
+比如——使用GitHub私有库。<br>
+我这里使用的方法是用GitHub Desktop创建了一个<strong>私有仓库</strong>，然后把Gridea的目录放了进去。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675353164702.png" alt="" loading="lazy"><br>
+每次写完博客之后打开客户端提交更改并且push到私有库即可。换了电脑只需要安装好Gridea，然后用GitHub Desktop给Pull回来，继续编辑就行了。<br>
+不过由于<strong>Gridea会把Token以明文存储在配置文件里</strong>，所以这种方法很可能是存在一定风险的，也是为什么<strong>一定要使用私有仓库</strong>的原因。至于还有没有更好的办法还得等我观察一段时间，但目前这种办法用起来也还算顺手，先这么用着吧。</p>
+]]></content>
+    </entry>
+</feed>
