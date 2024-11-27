@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="https://simotsukiyuki.github.io/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="霜月雪的游戏人生"><meta charset="UTF-8"><title>无需安装git！使用Gridea创建GitHub Pages指南 | SHIYUKI Software</title>
+<link href="https://simotsukiyuki.github.io/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://simotsukiyuki.github.io/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+<script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
+
+<link rel="canonical" href="https://simotsukiyuki.github.io/post/wu-xu-an-zhuang-gitshi-yong-gridea-chuang-jian-github-pages-zhi-nan/" />
+</head>
+<body>
+<div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
+<noscript><p class="warn" >本页面需要浏览器支持（启用）JavaScript</p></noscript><div class="header"><div class="logo_title"><div class="title animated fadeInDown"><a href="https://simotsukiyuki.github.io"><img alt="logo" style="display:inline-block;" src="https://simotsukiyuki.github.io/images/avatar.png"/></a><h1 title="SHIYUKI Software" class="weaklink"><a  href="/">SHIYUKI Software</a></h1>
+
+<div class="navbar weaklink">
+<div class="normal_nav">
+<div class="bitcron_nav_container"><div class="bitcron_nav"><div class="bitcron_nav"><div style="display:flex;justify-content:center;"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a></li></ul></nav>
+<div style="float:right;margin-top:1em"><form id="gridea-search-form" data-update="1578893743252" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="Search..."></form></div><div style="margin-left:0.5em;margin-top:1.2em"><input id="switch_default" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+<div class="clear clear_nav_inline_end"></div></div></div><div class="clear clear_nav_end"></div></div></div><div class="hamberger" href="javascript:void(0)" onclick="btn_toggle();"><i class="iconfont icon-category"></i></div></div></div></div>
+<div id="hn" class="no-js hidden_nav animated fadeInDown"><div class="bitcron_nav_container"><div class="bitcron_nav"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a></li></ul><div class="clear clear_nav_inline_end"></div></nav></div><div class="clear clear_nav_end"></div></div>
+<div style="display:flex;justify-content:center;inline-block;text-align:center;margin-top:7%"><div><form id="gridea-search-form" data-update="1732696466499" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q"  placeholder="Search..." /></form></div><div style="margin-left:0.5em"><input id="switch_default_h" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+</div></div>
+<script>function enableDarkmode(){document.body.classList.add("darkmode"),document.getElementById("switch_default").checked=1,document.getElementById("switch_default_h").checked=1}function removeDarkmode(){document.body.classList.remove("darkmode"),document.getElementById("switch_default").checked=0,document.getElementById("switch_default_h").checked=0}function getCookie(a){var b,c=new RegExp("(^| )"+a+"=([^;]*)(;|$)");return(b=document.cookie.match(c))?unescape(b[2]):null}cookie=getCookie("darkmode"),"enable"==cookie&&enableDarkmode(),window.matchMedia("(prefers-color-scheme: dark)").matches&&"disable"!==cookie&&(enableDarkmode(),document.cookie="darkmode=enable; path=/");var mobileBtn=function(){1==document.getElementById("switch_default").checked?(enableDarkmode(),document.cookie="darkmode=enable; path=/"):(removeDarkmode(),document.cookie="darkmode=disable; path=/")};</script>
+
+<div class="main"><div class="main-inner"><div class="content">
+<article class="post">
+<h2 class="post_title sm_margin"><a>无需安装git！使用Gridea创建GitHub Pages指南</a></h2>
+<script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2023-02-02</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://simotsukiyuki.github.io/tag/hSFIqP3HX/" class="tag">GitHub Pages</a> | 	<a href="https://simotsukiyuki.github.io/tag/QVLSUfnXI/" class="tag">Gridea</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">1235字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">5 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+</section>
+
+<img class="featureImg" alt="featureimg" src="https://simotsukiyuki.github.io/post-images/wu-xu-an-zhuang-gitshi-yong-gridea-chuang-jian-github-pages-zhi-nan.png" referrerpolicy="no-referrer">
+
+<div style="display:flex">
+<div class="md_block" id="md_block">
+<div class="round-shape-one"></div>
+<p>众所周知，Github Pages只能存放静态页面。因此如果需要在Github Pages上写博客就需要博客生成器。如果电脑上没有安装开发环境的相关工具，那么使用Hugo、Jekyll等就得先得去装环境……显然这种情况对于只想建站写东西来说实在是太麻烦了。<br>
+后来找到了Gridea这款静态博客系统，只需要安装客户端就可以用，甚至不需要装git就可以直接把生成的页面push到repo里。</p>
+<!-- more -->
+<h1 id="下载">下载</h1>
+<p><a href="https://github.com/getgridea/gridea">GitHub</a><br>
+<a href="https://open.gridea.dev/">官方网站</a></p>
+<h1 id="创建github-pages仓库">创建GitHub Pages仓库</h1>
+<p>在你的GitHub主页直接创建一个新的公开仓库，仓库的名字（Repository name）必须是<em>你的id.github.io</em>，例如我的id是<em>simotsukiyuki</em>,那么你的仓库名就应该是<em>simotsukiyuki.github.io</em>。创建好仓库之后，GitHub会自动将这个仓库识别为GitHub Pages的“网页空间”，接下来你只需要把你的网页html给push到这个仓库就可以了。</p>
+<h1 id="配置gridea">配置Gridea</h1>
+<p>安装好Gridea后，在主界面点击左侧“远程”选项卡，会要你填写一些信息<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675321719310.png" alt="" loading="lazy"><br>
+域名、仓库名、用户名不用多说了，分支一般是main或者master（取决于你的默认设置）。<br>
+关键的是这个Token，如果你之前没有，那么需要你去<a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a>生成一个新的Token。<br>
+在 <strong>Select scopes</strong> 勾选上 repo 的几个相关权限。在<strong>Expiration</strong>设置为<strong>No Expiration</strong>（即Token永不过期）。生成之后，记得把 Token 复制到你的本地，因为一旦关闭网页将不能再看到它。<br>
+远程选项卡最下面的HTTP代理那里取决于你的网络情况选择直连或者走代理。如果你使用了类似于威兔睿之类的软件访问GitHub，就填写127.0.0.1和10809端口（因为Http端口是Socket5端口号+1）。<br>
+之后测试一下连接，一般都可以测试成功。</p>
+<h1 id="推送至repo">推送至REPO</h1>
+<p>主题相关的设置不再赘述。之后你就可以写文章，然后推送到repo了。写好文章预览完毕，点击推送即可。当然，这期间需要确保你的网络能正确访问Github。等待推送完成，访问<em>https://[你的用户名].github.io</em> 就可以查看到你的网站了。</p>
+<h1 id="使用自己的顶级域名可选">使用自己的顶级域名（可选）</h1>
+<p>如果不想拖着github.io的二级域名，想要绑定到自己的顶级域名也是可以的。（GitHub业界良心）<br>
+注册顶级域名的相关内容不再赘述，也不是本文所讨论的内容。只说如何绑定</p>
+<h2 id="绑定cname记录-a记录和aaaa记录">绑定CNAME记录、A记录和AAAA记录</h2>
+<p>需要绑定以下三种记录：</p>
+<ul>
+<li>
+<p>绑定一条CNAME记录，前缀为www，指向<em>你的用户名.github.io</em> （注意不要加https://前缀）</p>
+</li>
+<li>
+<p>绑定四条A记录，前缀为@，列表如下</p>
+</li>
+</ul>
+<blockquote>
+<p>185.199.108.153<br>
+185.199.109.153<br>
+185.199.110.153<br>
+185.199.111.153</p>
+</blockquote>
+<ul>
+<li>绑定四条AAAA记录，同样前缀为@，列表如下</li>
+</ul>
+<blockquote>
+<p>2606:50c0:8000::153<br>
+2606:50c0:8001::153<br>
+2606:50c0:8002::153<br>
+2606:50c0:8003::153</p>
+</blockquote>
+<h2 id="设置github-pages">设置GitHub Pages</h2>
+<p>在网页仓库点击Settings<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675327802025.jpg" alt="" loading="lazy"><br>
+在左边选项卡找到Pages，然后在Custom Domain填入你的顶级域名（注意没有www前缀），然后勾选Enforce HTTPS即可。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675328007502.png" alt="" loading="lazy"><br>
+由于CNAME解析完成需要一定时间，所以稍等10几分钟（也有可能得几个小时），就可以直接访问到你的域名了。<br>
+最后<strong>别忘了在Gridea的“远程”选项卡内，在CNAME那一栏里填写你的域名</strong>。</p>
+<h2 id="如果https出现不安全的连接怎么办">如果Https出现“不安全的连接”怎么办</h2>
+<p>说明GitHub Pages没有正确处理TLS证书，只需要在上一步Custom Domain那里，删掉域名再重新填写一遍就可以了。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site</a></p>
+<h1 id="多设备同步编辑网站源文件的云存储">多设备同步编辑&amp;网站源文件的云存储</h1>
+<p>出于一些情况的考虑，有时候我们需要在不同的电脑上编辑网站内容。但显然由于Gridea并不存在在线编辑器，因此我们需要利用一些其他的方式来实现同步的需求。<br>
+比如——使用GitHub私有库。<br>
+我这里使用的方法是用GitHub Desktop创建了一个<strong>私有仓库</strong>，然后把Gridea的目录放了进去。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675353164702.png" alt="" loading="lazy"><br>
+每次写完博客之后打开客户端提交更改并且push到私有库即可。换了电脑只需要安装好Gridea，然后用GitHub Desktop给Pull回来，继续编辑就行了。<br>
+不过由于<strong>Gridea会把Token以明文存储在配置文件里</strong>，所以这种方法很可能是存在一定风险的，也是为什么<strong>一定要使用私有仓库</strong>的原因。至于还有没有更好的办法还得等我观察一段时间，但目前这种办法用起来也还算顺手，先这么用着吧。</p>
+
+<span id="footnote"></span>
+<div id = "warn"></div>
+</div>
+<div class="toc-container"><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%8B%E8%BD%BD">下载</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BAgithub-pages%E4%BB%93%E5%BA%93">创建GitHub Pages仓库</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AEgridea">配置Gridea</a></li>
+<li><a href="#%E6%8E%A8%E9%80%81%E8%87%B3repo">推送至REPO</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8F%AF%E9%80%89">使用自己的顶级域名（可选）</a>
+<ul>
+<li><a href="#%E7%BB%91%E5%AE%9Acname%E8%AE%B0%E5%BD%95-a%E8%AE%B0%E5%BD%95%E5%92%8Caaaa%E8%AE%B0%E5%BD%95">绑定CNAME记录、A记录和AAAA记录</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AEgithub-pages">设置GitHub Pages</a></li>
+<li><a href="#%E5%A6%82%E6%9E%9Chttps%E5%87%BA%E7%8E%B0%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%80%8E%E4%B9%88%E5%8A%9E">如果Https出现“不安全的连接”怎么办</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E8%AE%BE%E5%A4%87%E5%90%8C%E6%AD%A5%E7%BC%96%E8%BE%91%E7%BD%91%E7%AB%99%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E4%BA%91%E5%AD%98%E5%82%A8">多设备同步编辑&amp;网站源文件的云存储</a></li>
+</ul>
+</div>
+</div>
+<div id="fullPage"><canvas id="canvas"></canvas></div>
+</article>
+<div id="eof"><span>EOF</span></div><div class="round-shape-one"></div>
+<section>
+<div class="doc_comments">
+
+</div></section>
+</div></div></div><script>
+"use strict";!function(){for(var n=document.getElementsByTagName("pre"),e=n.length,s=0;s<e;s++){n[s].innerHTML='<span class="line-number"></span>'+n[s].innerHTML+'<span class="cl"></span>';for(var a=n[s].innerHTML.split(/\n/).length,r=0;r<a-1;r++){n[s].getElementsByTagName("span")[0].innerHTML+="<span>"+(r+1)+"</span>"}}}();
+let mainNavLinks=document.querySelectorAll(".markdownIt-TOC a");window.addEventListener("scroll",event=>{let fromTop=window.scrollY;mainNavLinks.forEach((link,index)=>{let section=document.getElementById(decodeURI(link.hash).substring(1));let nextSection=null
+if(mainNavLinks[index+1]){nextSection=document.getElementById(decodeURI(mainNavLinks[index+1].hash).substring(1));}
+if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop){link.classList.add("currentToc");}else{link.classList.remove("currentToc");}}else{link.classList.add("currentToc");}}else{link.classList.remove("currentToc");}});});
+var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
+var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
+</script>
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a><div class="footer animated fadeInDown"><div class="site_footer"><div class="mysocials"><div class="my_socials"><a href="https://github.com/simotsukiyuki/"title="github"><i class="iconfont icon-github"></i></a><a href="yuki@shiyuki.com"title="envelope"><i class="iconfont icon-envelope"></i></a><a href="https://www.zhihu.com/people/xue-zhu-shuang-yue"title="zhihu"><i class="iconfont icon-zhihu"></i></a></div></div><div class="copyright"id="copyright">Website owned by Simotsuki Yuki. © 2023 <a href="https://simotsukiyuki.github.io" style="margin:0;">SHIYUKI Software</a>.</br>除非特殊指明，本站所有文章内容版权均为SHIYUKI Software所有，未经允许谢绝转载。</div>
+<span style="display: inline;margin-right:15px;"><strong></strong></span><span id="busuanzi_container_page_pv" style="display: inline;"><span>📚<strong>11</strong> posts</span></div></div>
+<script>
+console.log("\n %c \u26a1Theme: Bitcron-pro Author's Blog:https://blog.blinkstar.cn  Writen By Serence  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;", );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js" type="module" defer></script>
+<script type="text/javascript" async src="https://simotsukiyuki.github.io/media/js/prism.js"></script>
+</body>
+</html>

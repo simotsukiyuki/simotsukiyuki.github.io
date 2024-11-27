@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://simotsukiyuki.github.io</id>
+    <title>SHIYUKI Software</title>
+    <updated>2024-11-27T08:34:44.161Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://simotsukiyuki.github.io"/>
+    <link rel="self" href="https://simotsukiyuki.github.io/atom.xml"/>
+    <subtitle>霜月雪的游戏人生</subtitle>
+    <logo>https://simotsukiyuki.github.io/images/avatar.png</logo>
+    <icon>https://simotsukiyuki.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, SHIYUKI Software</rights>
+    <entry>
+        <title type="html"><![CDATA[苏州联通换中兴电信7015TV3的几个坑]]></title>
+        <id>https://simotsukiyuki.github.io/post/su-zhou-lian-tong-huan-zhong-xing-dian-xin-7015tv3-de-ji-ge-keng/</id>
+        <link href="https://simotsukiyuki.github.io/post/su-zhou-lian-tong-huan-zhong-xing-dian-xin-7015tv3-de-ji-ge-keng/">
+        </link>
+        <updated>2024-11-27T08:14:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>前段时间pdd刷到7015tv3只要130不到，心痒痒想上2.5G WAN口，就搞了一个电信7015，结果换了没几天就频繁断网……卖家说是包技术但是最后也没彻底解决，最后还是我自己折腾出来的。<br>
+下面就记录一下。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>前段时间pdd刷到7015tv3只要130不到，心痒痒想上2.5G WAN口，就搞了一个电信7015，结果换了没几天就频繁断网……卖家说是包技术但是最后也没彻底解决，最后还是我自己折腾出来的。<br>
+下面就记录一下。</p>
+<!-- more -->
+<ol>
+<li>不要改地区<br>
+我是在联通宽带用电信的猫。<br>
+如果是这样的NTR情况，建议保持猫的地区为北京地区，因为苏州电信的光猫是<strong>彻头彻尾的灵车</strong>,改了这个地区以后将<strong>无法通过捅RESET孔重置系统设置</strong>！</li>
+<li>TR069需要开启并保持连接<br>
+我这里的联通似乎是会检测TR069连接状态的，因此在WAN连接设置那里，最好确保TR069和原猫保持一致，并确保TR069可以正常连上。至于tr069地址配置等都统统不需要。<br>
+同样因为NTR的原因，并不需要担心联通会通过TR069远程施法。只要保持连接就行。</li>
+<li>关于修改MAC地址，最好保持和原猫一致。<br>
+我这里是花了点小钱砸开了联通原猫的Telnet并且登上去了，然后用setmac show2把所有的数据都抄了下来，并把所有的值修改到了新猫里。<br>
+这里比较特殊的是，联通的SN是32位，而电信猫只接受31位的SN。其实也很好解决，只要把联通的32位SN删掉一个F就可以了，似乎联通也不会检测这个。</li>
+<li>关于时间<br>
+按理来说GPON系统是需要保持系统时间一致的，但众所周知这个猫并没有电池，重启后会变成1970年。<br>
+然而，联通官方的猫也是这个德行。。。所以不要太纠结这个。</li>
+</ol>
+<p>最后，下载速度还是很不错的<br>
+<img src="https://simotsukiyuki.github.io/post-images/1732696435427.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UsbEAm LAN Party在Ubuntu 24.04搭建的几个坑]]></title>
+        <id>https://simotsukiyuki.github.io/post/usbeam-lan-party-zai-ubuntu-2404-da-jian-de-ji-ge-keng/</id>
+        <link href="https://simotsukiyuki.github.io/post/usbeam-lan-party-zai-ubuntu-2404-da-jian-de-ji-ge-keng/">
+        </link>
+        <updated>2024-11-27T07:43:05.000Z</updated>
+        <content type="html"><![CDATA[<p>UsbEAm Lan Party下载地址：<a href="https://www.dogfight360.com/blog/1590/">https://www.dogfight360.com/blog/1590/</a></p>
+<p>下载地址里面是自带了搭建教程，但是由于年代稍有久远，对最新的Open***兼容性有点问题，这里记录一下。</p>
+<p>前5步按照教程照做就可以，到第六步的时候，需要按图修改server_udp.conf和server_tcp.conf（这里我改了端口所以是33074）<br>
+<img src="https://simotsukiyuki.github.io/post-images/1732694285597.png" alt="" loading="lazy"><br>
+<img src="https://simotsukiyuki.github.io/post-images/1732694290696.png" alt="" loading="lazy"><br>
+<code>verify-client-cert none</code></p>
+<p><code>tls-cipher DEFAULT:!EXP:!LOW<br>
+data-ciphers none<br>
+providers legacy default</code></p>
+<p>另外也需要配置一下service，可以参考 <a href="https://github.com/simotsukiyuki/PySMS780E?tab=readme-ov-file#%E4%BD%BF%E7%94%A8systemctl%E6%9E%84%E5%BB%BA%E4%B8%BA%E6%9C%8D%E5%8A%A1%E6%8E%A8%E8%8D%90">https://github.com/simotsukiyuki/PySMS780E?tab=readme-ov-file#使用systemctl构建为服务推荐</a> 照着改改</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5分钟自建RustDesk中继服务器，轻松Fuck ToDesk!]]></title>
+        <id>https://simotsukiyuki.github.io/post/5-fen-zhong-zi-jian-rustdesk-zhong-ji-fu-wu-qi/</id>
+        <link href="https://simotsukiyuki.github.io/post/5-fen-zhong-zi-jian-rustdesk-zhong-ji-fu-wu-qi/">
+        </link>
+        <updated>2024-09-25T07:00:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>废话不多说，直接上方法，教你5分钟<strong>FUCK off ToDesk</strong>!</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>废话不多说，直接上方法，教你5分钟<strong>FUCK off ToDesk</strong>!</p>
+<!-- more -->
+<ol>
+<li>先买VPS，过程不多说了，买完以后登录进入VPS的SSH。<br>
+一般来说1C1GB都够用了，不过我选择的最近这家VPS 2C2G4M的VPS也只要<strong>59一年</strong>，比Todesk这泡狗屎一年158的价格便宜太tmd多了！<br>
+这里以Ubuntu Server 24.04为例。<img src="https://simotsukiyuki.github.io/post-images/1727248246414.png" alt="" loading="lazy"></li>
+<li>安装docker。<br>
+<code>sudo apt install docker.io</code></li>
+<li>将RustDesk的Docker镜像下载下来。国内可以通过dockerpull.com进行加速。<br>
+<code>sudo docker pull dockerpull.com/rustdesk/rustdesk-server</code></li>
+<li>等待镜像下载完成以后启动。<br>
+<code><br>
+sudo docker run --restart always  --name hbbs  -p 30005:21115  -p 30006:21116  -p 30006:21116/udp -e ENCRYPTED_ONLY=true -v <code>pwd</code>:/root -td dockerpull.com/rustdesk/rustdesk-server hbbs </code><br>
+<code><br>
+sudo docker run  --restart always --name hbbr -p 30007:21117 -p 30009:21119 -e ENCRYPTED_ONLY=true -v <code>pwd</code>:/root -td dockerpull.com/rustdesk/rustdesk-server hbbr<br>
+</code><br>
+注意两点：
+<ol>
+<li>这里将默认的21115、21116、21117、21119端口映射到了3000X端口。如果你不需要映射，把命令中所有3000X端口改成2111X即可。</li>
+<li>我这里开启了强制要求加密。如果你不想要强制加密，把<code>-e ENCRYPTED_ONLY=true</code>去掉或者改成false就可以，不过不建议这样做。<br>
+如果开启强制加密，则必须在设置里配置正确的Key才可以连接，否则会提示Key不匹配。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1727248864665.png" alt="" loading="lazy"></li>
+</ol>
+</li>
+<li>去VPS的后台配置防火墙：
+<ol>
+<li>开放TCP 30005、30006、30007、30008、30009端口，如果不需要网页远程可以不开放30008以及30009。</li>
+<li>开放UDP 30006端口。</li>
+<li>如果你不需要映射则开放TCP 21115~21119、UDP 21116，总之和上一步的外网端口保持一致就行。</li>
+</ol>
+</li>
+<li>由于配置了强制加密，所以需要查询Key：<br>
+<code>sudo docker logs hbbs</code><br>
+此时Key将会以Logs的形式打印在终端，将key复制出来。</li>
+<li>下载rustdesk客户端并按照图片进行配置。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1727249058406.png" alt="" loading="lazy"></li>
+<li>配置完成保存，如果左下角提示就绪即说明搭建完成。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1727249202785.png" alt="" loading="lazy"></li>
+</ol>
+<p><strong>最后：FUCK ToDesk 这坨构式！</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[基于Python的PySMS780E已开放测试！支持LINUX！]]></title>
+        <id>https://simotsukiyuki.github.io/post/ji-yu-python-de-pysms780e-yi-kai-fang-ce-shi/</id>
+        <link href="https://simotsukiyuki.github.io/post/ji-yu-python-de-pysms780e-yi-kai-fang-ce-shi/">
+        </link>
+        <updated>2024-05-23T08:31:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>现在SMS780E也可以在树莓派、香橙派这种低功耗开发板上部署了！相比Windows系统小主机，功耗下降最高可达50%<sup>[1]</sup>！<br>
+详细的安装及配置流程请参考：https://github.com/simotsukiyuki/PySMS780E</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>现在SMS780E也可以在树莓派、香橙派这种低功耗开发板上部署了！相比Windows系统小主机，功耗下降最高可达50%<sup>[1]</sup>！<br>
+详细的安装及配置流程请参考：https://github.com/simotsukiyuki/PySMS780E</p>
+<!-- more -->
+<p><sup>[1]</sup>结果根据SHIYUKI Software实验室测定得出，实际功耗下降效果以实际为准。测试对比平台：OCEAN CLOUD海豚一号J1800小主机，操作系统Windows 7 Embedded Edition，测定结果为5W；香橙派Zero3 1GB，测定结果为1W</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SMS780E在Win7上部署及运行的一些问题]]></title>
+        <id>https://simotsukiyuki.github.io/post/sms780e-zai-win7-shang-bu-shu-ji-yun-xing-de-yi-xie-wen-ti/</id>
+        <link href="https://simotsukiyuki.github.io/post/sms780e-zai-win7-shang-bu-shu-ji-yun-xing-de-yi-xie-wen-ti/">
+        </link>
+        <updated>2023-08-09T08:31:41.000Z</updated>
+        <content type="html"><![CDATA[<p>这两天把吃灰了很久的J1800小主机拿了出来，打算拿来专门做短信转发的挂卡机。这玩意实测的待机功耗只有5W，尽管相比使用ESP32的板子还是要费电不少，但是也不是不能接受，毕竟J1800能干的事情更多，比如挂下载、挂PT等等……<br>
+操作系统我选择了Windows Embedded POSReady 7，所以在部署SMS780E的时候遇到了一些问题。</p>
+<h1 id="32位系统支持">32位系统支持</h1>
+<p>SMS780E是<strong>不支持32位操作系统</strong>的，请使用64位操作系统。</p>
+<h1 id="运行环境">运行环境</h1>
+<p>SMS780E需要安装.NET 4.7.2运行环境。<br>
+下载地址：https://dotnet.microsoft.com/zh-cn/download/dotnet-framework/net472</p>
+<h1 id="开启软件报错提示未经处理的异常找不到systemdatasqlite">开启软件报错，提示未经处理的异常，找不到System.Data.SQLite</h1>
+<p>是因为缺少Visual C++运行时导致的。<br>
+下载地址：https://aka.ms/vs/17/release/vc_redist.x64.exe</p>
+<h1 id="缺少air780e的驱动无法正确收发短信">缺少Air780E的驱动，无法正确收发短信</h1>
+<p>Air780E等合宙的所有开发板都需要CDC驱动，而Windows 7是不自带的。<br>
+安装CDC驱动使用Zadig：https://zadig.akeo.ie/<br>
+<img src="https://simotsukiyuki.github.io/post-images/1691571113700.jpg" alt="" loading="lazy"><br>
+等所有驱动都安装完毕后，SMS780E即可正常收发短信。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SMS780E：适配合宙Air780E(G)系列LTE Cat.1模块的短信转发工具]]></title>
+        <id>https://simotsukiyuki.github.io/post/sms780e/</id>
+        <link href="https://simotsukiyuki.github.io/post/sms780e/">
+        </link>
+        <updated>2023-08-04T04:13:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>近年来由于各方面的原因，不少人都有了第2、3、4甚至更多张卡。但是出门不可能同时带三四个手机，因此将副卡的短信转发到主力机就成了一个令很多人头疼的问题。<br>
+虽然也有类似使用安卓备用机装Tasker、短信转发助手之类的办法来实现短信转发功能，但是这么做需要一部安卓机不说，常年累月的把手机插着充电器充电更是有电池爆炸的风险。而且大多数安卓机都没有来电自启动的功能，一旦安卓机因为某些原因导致死机/关机/重启等，下次开机以前就无法正常工作了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>近年来由于各方面的原因，不少人都有了第2、3、4甚至更多张卡。但是出门不可能同时带三四个手机，因此将副卡的短信转发到主力机就成了一个令很多人头疼的问题。<br>
+虽然也有类似使用安卓备用机装Tasker、短信转发助手之类的办法来实现短信转发功能，但是这么做需要一部安卓机不说，常年累月的把手机插着充电器充电更是有电池爆炸的风险。而且大多数安卓机都没有来电自启动的功能，一旦安卓机因为某些原因导致死机/关机/重启等，下次开机以前就无法正常工作了。</p>
+<!-- more -->
+<p>目前本人看到成本最低的方案是使用Air780E配合ESP32Wifi板来实现短信转发，成本只需39.99元即可实现——<br>
+https://www.chenxublog.com/2022/10/28/19-9-sms-forwarding-air780e-esp32c3.html<br>
+这也是我觉得最好的方案之一。但是这个方案最大的问题是你还需要准备一个电烙铁，因为需要焊接5根PIN去连接uart串口。如果你像我一样焊工没有那么精通，很可能最后把板子搞废了都焊不成功……<br>
+于是作为替代的产物，就产生了SMS780E这个项目，使用电脑接收手机短信，然后再把短信转发出去。这种方案的问题在于电脑必须一直开着（所以比较费电），但是如果使用J1800/J1900这种低功耗的CPU，实际耗电量并不会比树莓派高太多，毕竟很多人家里用的软路由也要几十W的功耗。<br>
+软件下载：<br>
+Air780E短信专用固件：https://github.com/simotsukiyuki/sms_forwarding_uart/releases/tag/Release<br>
+SMS780E客户端：https://github.com/simotsukiyuki/SMS780E</p>
+<h1 id="使用方法">使用方法</h1>
+<h2 id="给开发板刷机">给开发板刷机</h2>
+<p>参考https://wiki.luatos.com/boardGuide/flash.html%E3%80%82。<br>
+记得刷机固件需要使用短信专用固件。</p>
+<h2 id="确定用户串口">确定用户串口</h2>
+<p>建议刷机以后重启开发板（软件重启或者硬件重启都可以》。<br>
+然后在LutaOS开发环境的Logs里可以确认到你的用户串口。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1691132373711.jpg" alt="" loading="lazy"><br>
+记下来。</p>
+<h2 id="配置sms780e">配置SMS780E</h2>
+<p><img src="https://simotsukiyuki.github.io/post-images/1691132412909.jpg" alt="" loading="lazy"><br>
+如果使用的是我提供的固件，或者你也没改代码。是不需要改串口波特率、数据位和停止位的。你只需要把上一节提到的那个用户串口（比如COM6）原封不动的填进去，点“开启串口”就可以了。<br>
+开启成功以后软件会自动最小化到托盘，你可以双击点开看收件箱，也可以让他最小化等待收信。</p>
+<h2 id="配置邮件转发">配置邮件转发</h2>
+<p><img src="https://simotsukiyuki.github.io/post-images/1691132531142.jpg" alt="" loading="lazy"><br>
+根据你自己邮箱提供商提供的界面一个一个、一个一个的填写进去即可。（首）</p>
+<h1 id="关于开发板选择">关于开发板选择</h1>
+<p><img src="https://simotsukiyuki.github.io/post-images/1691135672211.jpg" alt="" loading="lazy"><br>
+目前我在X宝上看到有两种开发板，左边这种是合宙官方推出的Air780E开发板，售价为39元（加0.99元还多一块Air32f103</p>
+<p>这块板子我也买了，不得不说做工还是很不错的。39.9元就可以实现短信转发功能<strong>非常超值</strong>，而且也省电。<br>
+当然代价也是有的，你需要焊接（即使配合我的SMS780E也需要短接一处引脚实现插电自启），你需要修改几处lua代码，你还需要去申请云平台。</p>
+<p>还有一种（右边的）是便宜十来块钱（我买到最便宜的是25元），直接就是一个USB公头的开发板，即插即用自动开机，做 工 十 分 粗 糙。这种的好处是你可以直接套用本文的内容，实现完全0焊接0代码，只需要刷机填几个参数就可以转发了。<br>
+当然这种方案的最大代价就是，你的电脑需要24小时开机……你将会需要再多花100多块钱买一台J1900的小主机才能帮你节省下来一点电费（使用ESP32的方案几乎不怎么耗电）。当然这种方案也不支持转发到平台，如果有这种需要，你可能还需要自己去写树莓派等上位机的程序。</p>
+<p>具体怎么权衡利弊就看你咯？</p>
+<h1 id="轶事">轶事</h1>
+<p>本来一开始我的开发板是在淘宝店X云物联买的。然后店家给我推荐他们有一个叫做“Air780短信版”的特别版本，说是能直接把短信内容显示到电脑屏幕上。<br>
+本着多一事不如少一事的原则，我偷懒。就选择了这个“短信版Air780E”开发板。<br>
+顺带一提这个玩意的售价是58元，而他们的“AT版”只需要28元就能买到。<br>
+结果收到货之后插上电脑才发现这不还是AT固件吗？找卖家理论，卖家过了老半天才跟我说要让我联系技术给我发固件，要刷了固件才是短信版。<br>
+我：……<br>
+那没辙，联系呗。<br>
+结果过了老半天，对面的技术才磨磨蹭蹭的给我回了消息<br>
+<em>Air780E的模块，短信版的，现在只支持接收短信,发送短信的功能正在做，预计这周会做好</em><br>
+我：？？？<br>
+啊？合着您是金凡啊，直接给我卖半成品是吧？不 搞 好 不 发 布 ？<br>
+但是想了想既然都已经收到了，那半成品就半成品吧，反正也就接收短信，不影响使用。<br>
+然后技术给我说，需要我这个模块提供IMEI号。<br>
+我隐约觉得有点不对劲，但是还是把IMEI给了他。<br>
+结果又是等啊等，等到了第二天上午我又催了一下对面的技术，临近中午他才终于把固件写完给了我。</p>
+<p>刷机，测试。嗯，CSDK固件，短信能接收，是直接输出到用户串口的，然后……<br>
+然后……我终于发现为什么他要我提供IMEI号了——<br>
+因为我在开发板的log里看到了一行字：<br>
+<em>检测IMEI：86xxxxxxxxxx，正确</em></p>
+<p>哈！合着您还搞加密是吧，为了不让我把这个所谓“短信版固件”泄露出去，您还真TM煞费苦心啊。<br>
+老实说到这里我已经很不悦了。<strong>客服回复慢、技术拖拖拉拉、高价卖半成品、搞加密闭锁</strong>，我都忍了。<br>
+最后让我下决心把这玩意给退掉的主要原因是我隔了三天以后去看这玩意的价格，他那个所谓的“短信版”固件竟然降价到38元了！！</p>
+<p>我超……<br>
+考虑到我多花了接近一倍的价格却拿到的是个半成品，这种背刺行为搞得我非常恼火。鉴于当时我又买了合宙官方的开发板，而且也已经参考chenxuuu的开源代码（https://github.com/chenxuuu/sms_forwarding/tree/master/only_Air780E_version），实现了同样把短信输出到用户串口（并且序列化成json格式）的功能（是的，他们的技术甚至连抄都不会抄），在跟客服对线失败以后，我当即选择了立即退款，然后拍下了另一家25元的AT固件的Air780E。<br>
+当然后来还实现了发送短信的功能（根本没技术含量，甚至可以完全照抄合宙的档案例程代码）。<br>
+最后总算是没有当这个冤大头。<br>
+但是他们客服至今还没给我确认退款，我运费险还没赔给我呢……</p>
+<p>对了，说到客服，我当时卡在uart无法正常输出的问题上卡了蛮久。最后无奈只好去合宙官方论坛注册了一个账户，写清楚了自己的问题。<br>
+合宙官方论坛的工作人员非常热情的，几分钟就给了我回复——而且是在论坛上回复的。</p>
+<p>我已经完全无力吐槽这个淘宝店了。<br>
+虽然东西确实还行。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决OMV6安装ovm-extras不成功的问题]]></title>
+        <id>https://simotsukiyuki.github.io/post/jie-jue-omv6-an-zhuang-ovm-extras-bu-cheng-gong-de-wen-ti/</id>
+        <link href="https://simotsukiyuki.github.io/post/jie-jue-omv6-an-zhuang-ovm-extras-bu-cheng-gong-de-wen-ti/">
+        </link>
+        <updated>2023-02-05T11:47:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>安装OVM6之后，根据omv-extras的官方教程，安装插件仓库需要在tty内输入下面的命令</p>
+<pre><code>wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash
+</code></pre>
+<p>但是由于众所周知的某些不能说的原因，在国内访问GitHub会有各种各样的问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>安装OVM6之后，根据omv-extras的官方教程，安装插件仓库需要在tty内输入下面的命令</p>
+<pre><code>wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash
+</code></pre>
+<p>但是由于众所周知的某些不能说的原因，在国内访问GitHub会有各种各样的问题。</p>
+<!-- more -->
+<h1 id="解决方法">解决方法</h1>
+<p>在OMV后台的<em>服务-&gt;SSH菜单</em>打开SSH服务，然后用Putty连过去执行如下命令替换清华源</p>
+<pre><code>sudo omv-env set OMV_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/public&quot;
+sudo omv-env set OMV_APT_ALT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/packages&quot;
+sudo omv-env set OMV_APT_KERNEL_BACKPORTS_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/debian&quot;
+sudo omv-env set OMV_APT_SECURITY_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/debian-security&quot;
+sudo omv-env set OMV_EXTRAS_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers&quot;
+sudo omv-env set OMV_DOCKER_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian&quot;
+sudo omv-env set OMV_PROXMOX_APT_REPOSITORY_URL &quot;https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian&quot;
+sudo omv-salt stage run all
+</code></pre>
+<p>替换完成后安装omv-extras即可</p>
+<pre><code>sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_6.1.1_all.deb
+sudo dpkg -i openmediavault-omvextrasorg_6.1.1_all.deb
+</code></pre>
+<h1 id="来源">来源</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/592575274">https://zhuanlan.zhihu.com/p/592575274</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ayaneo Black Screen：一个OLED掌机一键关屏的小工具]]></title>
+        <id>https://simotsukiyuki.github.io/post/ayaneo-black-screenyi-ge-oled-zhang-ji-yi-jian-guan-ping-de-xiao-gong-ju/</id>
+        <link href="https://simotsukiyuki.github.io/post/ayaneo-black-screenyi-ge-oled-zhang-ji-yi-jian-guan-ping-de-xiao-gong-ju/">
+        </link>
+        <updated>2023-02-03T01:38:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>众所周知由于OLED存在烧屏的问题，所以像AYANEO Air这种使用OLED屏幕的掌机，在下载游戏的时候就有可能因为长时间保持一个静态界面导致烧屏。<br>
+这个小工具就是为了延缓OLED的烧屏问题而制作的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>众所周知由于OLED存在烧屏的问题，所以像AYANEO Air这种使用OLED屏幕的掌机，在下载游戏的时候就有可能因为长时间保持一个静态界面导致烧屏。<br>
+这个小工具就是为了延缓OLED的烧屏问题而制作的。</p>
+<!-- more -->
+<h1 id="下载">下载</h1>
+<p><a href="https://github.com/simotsukiyuki/AyaneoBlackScreen/releases">GitHub链接</a></p>
+<h1 id="使用方法">使用方法</h1>
+<p>推荐使用安装版程序。<br>
+在安装之后这个程序会出现在你的开始菜单。把它固定到任务栏，点击运行即可。<br>
+退出程序：点击五次屏幕或鼠标左键。<br>
+删除：去控制面板卸载。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[无需安装git！使用Gridea创建GitHub Pages指南]]></title>
+        <id>https://simotsukiyuki.github.io/post/wu-xu-an-zhuang-gitshi-yong-gridea-chuang-jian-github-pages-zhi-nan/</id>
+        <link href="https://simotsukiyuki.github.io/post/wu-xu-an-zhuang-gitshi-yong-gridea-chuang-jian-github-pages-zhi-nan/">
+        </link>
+        <updated>2023-02-02T06:30:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>众所周知，Github Pages只能存放静态页面。因此如果需要在Github Pages上写博客就需要博客生成器。如果电脑上没有安装开发环境的相关工具，那么使用Hugo、Jekyll等就得先得去装环境……显然这种情况对于只想建站写东西来说实在是太麻烦了。<br>
+后来找到了Gridea这款静态博客系统，只需要安装客户端就可以用，甚至不需要装git就可以直接把生成的页面push到repo里。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>众所周知，Github Pages只能存放静态页面。因此如果需要在Github Pages上写博客就需要博客生成器。如果电脑上没有安装开发环境的相关工具，那么使用Hugo、Jekyll等就得先得去装环境……显然这种情况对于只想建站写东西来说实在是太麻烦了。<br>
+后来找到了Gridea这款静态博客系统，只需要安装客户端就可以用，甚至不需要装git就可以直接把生成的页面push到repo里。</p>
+<!-- more -->
+<h1 id="下载">下载</h1>
+<p><a href="https://github.com/getgridea/gridea">GitHub</a><br>
+<a href="https://open.gridea.dev/">官方网站</a></p>
+<h1 id="创建github-pages仓库">创建GitHub Pages仓库</h1>
+<p>在你的GitHub主页直接创建一个新的公开仓库，仓库的名字（Repository name）必须是<em>你的id.github.io</em>，例如我的id是<em>simotsukiyuki</em>,那么你的仓库名就应该是<em>simotsukiyuki.github.io</em>。创建好仓库之后，GitHub会自动将这个仓库识别为GitHub Pages的“网页空间”，接下来你只需要把你的网页html给push到这个仓库就可以了。</p>
+<h1 id="配置gridea">配置Gridea</h1>
+<p>安装好Gridea后，在主界面点击左侧“远程”选项卡，会要你填写一些信息<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675321719310.png" alt="" loading="lazy"><br>
+域名、仓库名、用户名不用多说了，分支一般是main或者master（取决于你的默认设置）。<br>
+关键的是这个Token，如果你之前没有，那么需要你去<a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a>生成一个新的Token。<br>
+在 <strong>Select scopes</strong> 勾选上 repo 的几个相关权限。在<strong>Expiration</strong>设置为<strong>No Expiration</strong>（即Token永不过期）。生成之后，记得把 Token 复制到你的本地，因为一旦关闭网页将不能再看到它。<br>
+远程选项卡最下面的HTTP代理那里取决于你的网络情况选择直连或者走代理。如果你使用了类似于威兔睿之类的软件访问GitHub，就填写127.0.0.1和10809端口（因为Http端口是Socket5端口号+1）。<br>
+之后测试一下连接，一般都可以测试成功。</p>
+<h1 id="推送至repo">推送至REPO</h1>
+<p>主题相关的设置不再赘述。之后你就可以写文章，然后推送到repo了。写好文章预览完毕，点击推送即可。当然，这期间需要确保你的网络能正确访问Github。等待推送完成，访问<em>https://[你的用户名].github.io</em> 就可以查看到你的网站了。</p>
+<h1 id="使用自己的顶级域名可选">使用自己的顶级域名（可选）</h1>
+<p>如果不想拖着github.io的二级域名，想要绑定到自己的顶级域名也是可以的。（GitHub业界良心）<br>
+注册顶级域名的相关内容不再赘述，也不是本文所讨论的内容。只说如何绑定</p>
+<h2 id="绑定cname记录-a记录和aaaa记录">绑定CNAME记录、A记录和AAAA记录</h2>
+<p>需要绑定以下三种记录：</p>
+<ul>
+<li>
+<p>绑定一条CNAME记录，前缀为www，指向<em>你的用户名.github.io</em> （注意不要加https://前缀）</p>
+</li>
+<li>
+<p>绑定四条A记录，前缀为@，列表如下</p>
+</li>
+</ul>
+<blockquote>
+<p>185.199.108.153<br>
+185.199.109.153<br>
+185.199.110.153<br>
+185.199.111.153</p>
+</blockquote>
+<ul>
+<li>绑定四条AAAA记录，同样前缀为@，列表如下</li>
+</ul>
+<blockquote>
+<p>2606:50c0:8000::153<br>
+2606:50c0:8001::153<br>
+2606:50c0:8002::153<br>
+2606:50c0:8003::153</p>
+</blockquote>
+<h2 id="设置github-pages">设置GitHub Pages</h2>
+<p>在网页仓库点击Settings<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675327802025.jpg" alt="" loading="lazy"><br>
+在左边选项卡找到Pages，然后在Custom Domain填入你的顶级域名（注意没有www前缀），然后勾选Enforce HTTPS即可。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675328007502.png" alt="" loading="lazy"><br>
+由于CNAME解析完成需要一定时间，所以稍等10几分钟（也有可能得几个小时），就可以直接访问到你的域名了。<br>
+最后<strong>别忘了在Gridea的“远程”选项卡内，在CNAME那一栏里填写你的域名</strong>。</p>
+<h2 id="如果https出现不安全的连接怎么办">如果Https出现“不安全的连接”怎么办</h2>
+<p>说明GitHub Pages没有正确处理TLS证书，只需要在上一步Custom Domain那里，删掉域名再重新填写一遍就可以了。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site</a></p>
+<h1 id="多设备同步编辑网站源文件的云存储">多设备同步编辑&amp;网站源文件的云存储</h1>
+<p>出于一些情况的考虑，有时候我们需要在不同的电脑上编辑网站内容。但显然由于Gridea并不存在在线编辑器，因此我们需要利用一些其他的方式来实现同步的需求。<br>
+比如——使用GitHub私有库。<br>
+我这里使用的方法是用GitHub Desktop创建了一个<strong>私有仓库</strong>，然后把Gridea的目录放了进去。<br>
+<img src="https://simotsukiyuki.github.io/post-images/1675353164702.png" alt="" loading="lazy"><br>
+每次写完博客之后打开客户端提交更改并且push到私有库即可。换了电脑只需要安装好Gridea，然后用GitHub Desktop给Pull回来，继续编辑就行了。<br>
+不过由于<strong>Gridea会把Token以明文存储在配置文件里</strong>，所以这种方法很可能是存在一定风险的，也是为什么<strong>一定要使用私有仓库</strong>的原因。至于还有没有更好的办法还得等我观察一段时间，但目前这种办法用起来也还算顺手，先这么用着吧。</p>
+]]></content>
+    </entry>
+</feed>
